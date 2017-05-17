@@ -1,0 +1,18 @@
+---
+resources:
+- name: windowsstem
+  type: git
+  source:
+    uri: https://github.com/orangeglasses/bosh-windows-vsphere-stemcell-pipeline.git
+
+jobs:
+- name: prepare-clone
+  public: true
+  plan:
+  - get: windowsstem
+  - task: clone
+    file: clonevm/clonevm.yml
+    params: 
+        VROUSER: {{vro_user}}
+        VROPASS: {{vro_pass}}
+        VROENDPOINT: {{vro_endpoint}}
