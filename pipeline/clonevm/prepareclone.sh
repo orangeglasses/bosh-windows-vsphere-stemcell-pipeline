@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# TODO: move to custom container
+echo "Installing curl"
+apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/lib/apt/lists
+
 echo "Starting clone workflow"
 echo $VROUSER
 echo $VROENDPOINT
