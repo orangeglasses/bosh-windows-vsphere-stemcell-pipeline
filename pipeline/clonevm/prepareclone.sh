@@ -9,8 +9,11 @@ VROAPI=$VROENDPOINT"/d9ad2397-ac07-444d-978e-5f86c07f09d5/executions"
 echo $VROAPI
 echo "Starting clone workflow at "$VROAPI" with user "$VROUSER
 
-TOKEN=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' '$VROAPI' | grep Location: | cut -d' ' -f2)
-echo "Received: "$TOKEN
+RESPONSE=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' '$VROAPI')
+echo "API Response: "$RESPONSE
+
+TOKEN=$($RESPONSE | grep Location: | cut -d' ' -f2)
+echo "Status token: "$TOKEN
 
 # eliminate CR from result.
 TEST=""
