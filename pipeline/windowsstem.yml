@@ -11,7 +11,7 @@ jobs:
   plan:
   - get: windowsstem
   - task: clone
-    file: clonevm/clonevm.yml
+    file: windowsstem/pipeline/clonevm/clonevm.yml
     params: 
         VROUSER: {{vro_user}}
         VROPASS: {{vro_pass}}
