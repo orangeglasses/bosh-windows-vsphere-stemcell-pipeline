@@ -12,10 +12,10 @@ echo $VROAPI
 echo "Starting clone workflow at "$VROAPI" with user "$VROUSER
 
 echo "Testing..."
-curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' '$VROAPI'
+curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' $VROAPI
 
 echo "For real now"
-RESPONSE=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' '$VROAPI')
+RESPONSE=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' $VROAPI )
 echo "API Response: "$RESPONSE
 
 TOKEN=$($RESPONSE | grep Location: | cut -d' ' -f2)
