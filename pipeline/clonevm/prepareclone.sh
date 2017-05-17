@@ -4,6 +4,8 @@
 echo "Installing curl"
 apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/lib/apt/lists
 
+set -x
+
 echo $VROUSER
 VROAPI=$VROENDPOINT"/d9ad2397-ac07-444d-978e-5f86c07f09d5/executions"
 echo $VROAPI
