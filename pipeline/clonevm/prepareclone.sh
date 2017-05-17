@@ -26,8 +26,8 @@ done
 if [ "$STATE" == "completed" ]
 then
 echo Clone ready.
-exit 1
+exit 0
 fi
 
 echo Clone failed.
-exit 0
+exit 1
