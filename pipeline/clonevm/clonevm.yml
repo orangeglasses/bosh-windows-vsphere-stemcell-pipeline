@@ -9,4 +9,4 @@ inputs:
 - name: windowsstem
 
 run:
-  path: ./clonevm/prepareclone.sh
+  path: windowsstem/clonevm/prepareclone.sh
