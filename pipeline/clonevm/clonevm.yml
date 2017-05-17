@@ -6,7 +6,7 @@ image_resource:
   source: {repository: ubuntu}
 
 inputs:
-- name: clonevm
+- name: windowsstem
 
 run:
   path: ./clonevm/prepareclone.sh
