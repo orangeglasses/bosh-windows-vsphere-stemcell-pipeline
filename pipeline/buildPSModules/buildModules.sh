@@ -21,9 +21,6 @@ echo "Building modules"
 rake package:psmodules
 
 echo "Copy to dedicated output"
-cd $MAINDIR
-ls -lrt
-mkdir BOSHmodules
-cp $1/build/bosh-psmodules.zip BOSHmodules/
+cp $1/build/bosh-psmodules.zip $MAINDIR/BOSHmodules/
 
 echo Modules ready.
