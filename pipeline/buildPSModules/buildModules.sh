@@ -18,6 +18,8 @@ echo "Building modules"
 rake package:psmodules
 
 echo "Copy to dedicated output"
+cd /
+mkdir BOSHmodules
 cp build/bosh-psmodules.zip BOSHmodules/
 
 echo Modules ready.
