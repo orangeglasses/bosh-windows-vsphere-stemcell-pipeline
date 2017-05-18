@@ -13,4 +13,4 @@ outputs:
 - name: BOSHmodules
 
 run:
-  path: windowsstem/pipeline/buildPSModules/copyPSModules.sh
+  path: windowsstem/pipeline/buildPSModules/copyModules.sh
