@@ -4,6 +4,10 @@ resources:
   type: git
   source:
     uri: https://github.com/orangeglasses/bosh-windows-vsphere-stemcell-pipeline.git
+- name: BOSHresources
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder.git
 
 jobs:
 - name: prepare-clone
@@ -16,3 +20,12 @@ jobs:
         VROUSER: {{vro_user}}
         VROPASS: {{vro_pass}}
         VROENDPOINT: {{vro_endpoint}}
+- name: addBOSHresource
+  public: true
+  plan:
+  - get: BOSHresources
+  - get: windowsstem
+  - task: buildPSModules
+    file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
+    params:
+        VERSION: 1056.0

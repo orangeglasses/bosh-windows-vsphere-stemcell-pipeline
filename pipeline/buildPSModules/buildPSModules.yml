@@ -1,0 +1,13 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: ruurdk/builder}
+
+inputs:
+- name: windowsstem
+- name: BOSHresources
+
+run:
+  path: windowsstem/pipeline/buildPSModules/buildModules.sh
