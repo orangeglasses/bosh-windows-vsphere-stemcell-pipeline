@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo $VERSION
-echo $1
-
 echo "Moving to resource folder"
 cd $1
 

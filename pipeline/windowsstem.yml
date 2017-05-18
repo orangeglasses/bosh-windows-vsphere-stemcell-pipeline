@@ -28,4 +28,4 @@ jobs:
   - task: buildPSModules
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
     params:
-        VERSION: 1056.0
+        VERSION: "1056.0"
