@@ -9,9 +9,6 @@ git checkout $VERSION
 echo "Getting submodules"
 git submodule update --init --recursive
 
-echo "Installing bundler"
-gem install bundler
-
 echo "Bundling"
 bundle install
 
