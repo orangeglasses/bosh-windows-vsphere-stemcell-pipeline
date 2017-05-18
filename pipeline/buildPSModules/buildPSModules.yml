@@ -11,3 +11,4 @@ inputs:
 
 run:
   path: windowsstem/pipeline/buildPSModules/buildModules.sh
+  dir: BOSHresources/
