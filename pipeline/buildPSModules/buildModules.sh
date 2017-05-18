@@ -1,7 +1,10 @@
 #!/bin/bash
 
 echo $VERSION
-echo $PWD
+echo $1
+
+echo "Moving to resource folder"
+cd $1
 
 echo "Checking out version "$VERSION
 git checkout $VERSION
