@@ -20,6 +20,6 @@ rake package:psmodules
 echo "Copy to dedicated output"
 cd /
 mkdir BOSHmodules
-cp build/bosh-psmodules.zip BOSHmodules/
+cp $1/build/bosh-psmodules.zip BOSHmodules/
 
 echo Modules ready.
