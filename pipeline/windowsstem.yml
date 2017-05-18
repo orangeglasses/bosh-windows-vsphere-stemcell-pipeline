@@ -29,3 +29,8 @@ jobs:
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
     params:
         VERSION: "1056.0"
+  - task: copyPSModules
+    file: windowsstem/pipeline/buildPSModules/copyPSModules.yml
+    params:
+        VMUSER: {{vm_user}}
+        VMPASS: {{vm_pass}}
