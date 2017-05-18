@@ -1,9 +1,11 @@
 #!/bin/bash
 
 set -e
-MAINDIR=$PWD
 
-echo "Moving to resource folder"
+MAINDIR=$PWD
+echo "Current folder: "$MAINDIR
+
+echo "Moving to resource folder: "$1
 cd $1
 
 echo "Checking out version "$VERSION
