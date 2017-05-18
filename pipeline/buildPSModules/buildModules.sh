@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+MAINDIR=$PWD
 
 echo "Moving to resource folder"
 cd $1
@@ -18,7 +19,7 @@ echo "Building modules"
 rake package:psmodules
 
 echo "Copy to dedicated output"
-cd /
+cd $MAINDIR
 mkdir BOSHmodules
 cp $1/build/bosh-psmodules.zip BOSHmodules/
 
