@@ -9,6 +9,9 @@ inputs:
 - name: windowsstem
 - name: BOSHresources
 
+outputs:
+- name: BOSHmodules
+
 run:
   path: windowsstem/pipeline/buildPSModules/buildModules.sh
   args: [ BOSHresources ]

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Moving to resource folder"
 cd $1
 
@@ -15,5 +17,7 @@ bundle install
 echo "Building modules"
 rake package:psmodules
 
+echo "Copy to dedicated output"
+cp build/bosh-psmodules.zip BOSHmodules/
+
 echo Modules ready.
-exit 0
