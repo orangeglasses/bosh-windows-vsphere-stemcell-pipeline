@@ -5,6 +5,7 @@ set -e
 echo "Current folder: "$PWD
 
 echo "Copying modules"
-#cp BOSHmodules/*
+# todo add ip returned from vro script
+sshpass -p "'"$VMPASS"'" scp BOSHmodules/* $VMUSER@192.168.0.80:C:\Program Files\WindowsPowerShell\Modules
 
 echo Modules copied to VM.
