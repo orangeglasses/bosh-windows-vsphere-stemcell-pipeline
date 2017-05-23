@@ -17,10 +17,10 @@ git submodule update --init --recursive
 echo "Bundling"
 bundle install
 
-echo "Building modules"
-rake package:psmodules
+echo "Building agent"
+rake package:agent
 
 echo "Copy to dedicated output"
-cp build/bosh-psmodules.zip $MAINDIR/BOSHmodules/
+cp build/agent.zip $MAINDIR/BOSHagent/
 
 echo "Modules ready."

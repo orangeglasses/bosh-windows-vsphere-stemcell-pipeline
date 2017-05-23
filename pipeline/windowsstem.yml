@@ -28,9 +28,18 @@ jobs:
   - task: buildPSModules
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
     params:
-        VERSION: "1056.0"
+        VERSION: {{version}}
   - task: copyPSModules
     file: windowsstem/pipeline/buildPSModules/copyPSModules.yml
+    params:
+        VMUSER: {{vm_user}}
+        VMPASS: {{vm_pass}}
+  - task: buildAgent
+    file: windowsstem/pipeline/addAgent/buildAgent.yml
+    params: 
+        VERSION: {{version}}
+  - task: copyAgent
+    file: windowsstem/pipeline/addAgent/copyAgent.yml
     params:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
