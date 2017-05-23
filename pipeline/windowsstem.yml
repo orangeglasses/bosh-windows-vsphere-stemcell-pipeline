@@ -8,6 +8,15 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder.git
+- name: clonedetail
+  type: s3
+  source:
+    bucket: windowsstemcell
+    access_key_id: {{s3_user}}
+    secret_access_key: {{s3_pass}}
+    endpoint: {{s3_endpoint}}
+    disable_ssl: true
+    regexp: "ip.txt"
 
 jobs:
 - name: createVM
@@ -20,6 +29,11 @@ jobs:
         VROUSER: {{vro_user}}
         VROPASS: {{vro_pass}}
         VROENDPOINT: {{vro_endpoint}}
+  - put: cloneip
+    resource: clonedetail
+    params:
+        file: cloneip/ip.txt
+
 
 - name: addBOSHmodules
   public: true
@@ -27,6 +41,7 @@ jobs:
   - aggregate: 
         - get: BOSHresources
         - get: windowsstem
+        - get: clonedetail
           passed: [createVM]
   - task: buildPSModules
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
@@ -44,6 +59,7 @@ jobs:
   - aggregate:
         - get: BOSHresources
         - get: windowsstem
+        - get: clonedetail
           passed: [createVM]
   - task: buildAgent
     file: windowsstem/pipeline/addAgent/buildAgent.yml
@@ -59,6 +75,7 @@ jobs:
   public: true
   plan:
   - get: windowsstem
+  - get: clonedetail
     passed: [createVM, addBOSHmodules, addBOSHagent]
   - task: prepareCell
     file: windowsstem/pipeline/prepareCell/prepareCell.yml
