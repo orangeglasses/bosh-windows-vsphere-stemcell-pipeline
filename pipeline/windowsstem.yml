@@ -24,6 +24,7 @@ jobs:
   public: true
   plan:
   - get: windowsstem
+  - get: clonedetail
   - task: clone
     file: windowsstem/pipeline/clonevm/clonevm.yml
     params: 
