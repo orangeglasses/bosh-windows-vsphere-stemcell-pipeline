@@ -8,8 +8,6 @@ image_resource:
 inputs:
 - name: windowsstem
 - name: BOSHresources
-
-outputs:
 - name: BOSHmodules
 
 run:
