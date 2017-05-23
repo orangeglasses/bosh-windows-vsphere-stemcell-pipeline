@@ -11,4 +11,4 @@ inputs:
 - name: BOSHagent
 
 run:
-  path: windowsstem/pipeline/buildAgent/copyAgent.sh
+  path: windowsstem/pipeline/addAgent/copyAgent.sh

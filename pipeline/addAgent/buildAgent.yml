@@ -13,5 +13,5 @@ outputs:
 - name: BOSHagent
 
 run:
-  path: windowsstem/pipeline/buildAgent/buildAgent.sh
+  path: windowsstem/pipeline/addAgent/buildAgent.sh
   args: [ BOSHresources ]
