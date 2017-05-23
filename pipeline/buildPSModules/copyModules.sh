@@ -6,7 +6,8 @@ echo "Unzipping modules"
 mkdir BOSHmodulesExtracted
 unzip -o BOSHmodules/* -d BOSHmodulesExtracted/
 
-CLONEIP=$(cat clonedetail/ip-1.txt)
+VERSION=$(cat clonedetail/version)
+CLONEIP=$(cat clonedetail/ip-$VERSION.txt)
 echo "Copying modules to clone at "$CLONEIP
 sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHmodulesExtracted/* $VMUSER@$CLONEIP:'"/Program Files/WindowsPowerShell/Modules"'
 

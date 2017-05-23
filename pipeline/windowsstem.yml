@@ -17,6 +17,7 @@ resources:
     endpoint: {{s3_endpoint}}
     disable_ssl: true
     regexp: ip-(.*).txt
+    version: latest
 
 jobs:
 - name: createVM
