@@ -10,7 +10,7 @@ resources:
     uri: https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder.git
 
 jobs:
-- name: prepare-clone
+- name: createVM
   public: true
   plan:
   - get: windowsstem
@@ -40,6 +40,15 @@ jobs:
         VERSION: {{version}}
   - task: copyAgent
     file: windowsstem/pipeline/addAgent/copyAgent.yml
+    params:
+        VMUSER: {{vm_user}}
+        VMPASS: {{vm_pass}}
+- name: prepareCell
+  public: true
+  plan:
+  - get: windowsstem
+  - task: prepareCell
+    file: windowsstem/pipeline/prepareCell/prepareCell.yml
     params:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
