@@ -7,7 +7,7 @@ echo "Connecting to cell VM."
 sshpass -p $VMPASS ssh -o StrictHostKeyChecking=no $VMUSER@192.168.0.80
 
 echo "Installing CF Features."
-powershell Install-CFFeatures
+powershell -NonInteractive -ExecutionPolicy Unrestricted -File Install-CFFeatures
 
 echo "Disconnect."
 exit

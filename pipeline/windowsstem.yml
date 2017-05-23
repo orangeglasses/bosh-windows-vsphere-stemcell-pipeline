@@ -20,11 +20,14 @@ jobs:
         VROUSER: {{vro_user}}
         VROPASS: {{vro_pass}}
         VROENDPOINT: {{vro_endpoint}}
-- name: addBOSHresource
+
+- name: addBOSHmodules
   public: true
   plan:
-  - get: BOSHresources
-  - get: windowsstem
+  - aggregate: 
+        - get: BOSHresources
+        - get: windowsstem
+          passed: [createVM]
   - task: buildPSModules
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
     params:
@@ -34,6 +37,14 @@ jobs:
     params:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
+
+- name: addBOSHagent
+  public: true
+  plan:
+  - aggregate:
+        - get: BOSHresources
+        - get: windowsstem
+          passed: [createVM]
   - task: buildAgent
     file: windowsstem/pipeline/addAgent/buildAgent.yml
     params: 
@@ -43,10 +54,12 @@ jobs:
     params:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
+
 - name: prepareCell
   public: true
   plan:
   - get: windowsstem
+    passed: [createVM, addBOSHmodules, addBOSHagent]
   - task: prepareCell
     file: windowsstem/pipeline/prepareCell/prepareCell.yml
     params:
