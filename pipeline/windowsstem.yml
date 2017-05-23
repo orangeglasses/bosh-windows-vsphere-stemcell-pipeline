@@ -17,14 +17,12 @@ resources:
     endpoint: {{s3_endpoint}}
     disable_ssl: true
     regexp: ip-(.*).txt
-    version: latest
 
 jobs:
 - name: createVM
   public: true
   plan:
   - get: windowsstem
-  - get: clonedetail
   - task: clone
     file: windowsstem/pipeline/clonevm/clonevm.yml
     params: 
