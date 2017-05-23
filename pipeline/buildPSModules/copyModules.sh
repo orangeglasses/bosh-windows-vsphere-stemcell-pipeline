@@ -2,17 +2,11 @@
 
 set -e
 
-echo "Current folder: "$PWD
-
-echo clonedetail
-ls clonedetail
-
-CLONEIP=$(cat clonedetail/ip.txt)
-
 echo "Unzipping modules"
 mkdir BOSHmodulesExtracted
 unzip -o BOSHmodules/* -d BOSHmodulesExtracted/
 
+CLONEIP=$(cat clonedetail/ip-1.txt)
 echo "Copying modules to clone at "$CLONEIP
 sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHmodulesExtracted/* $VMUSER@$CLONEIP:'"/Program Files/WindowsPowerShell/Modules"'
 
