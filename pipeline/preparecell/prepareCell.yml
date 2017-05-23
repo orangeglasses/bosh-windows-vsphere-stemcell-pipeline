@@ -1,8 +1,0 @@
----
-platform: linux
-
-inputs:
-- name: windowsstem
-
-run:
-  path: windowsstem/pipeline/preparecell/prepareCell.sh
