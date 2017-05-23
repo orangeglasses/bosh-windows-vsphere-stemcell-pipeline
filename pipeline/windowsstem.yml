@@ -16,7 +16,7 @@ resources:
     secret_access_key: {{s3_pass}}
     endpoint: {{s3_endpoint}}
     disable_ssl: true
-    regexp: "ip.txt"
+    regexp: ip-(.*).txt
 
 jobs:
 - name: createVM
@@ -32,7 +32,7 @@ jobs:
   - put: cloneip
     resource: clonedetail
     params:
-        file: cloneip/ip.txt
+        file: cloneip/ip-*.txt
 
 
 - name: addBOSHmodules

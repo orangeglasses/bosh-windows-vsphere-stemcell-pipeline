@@ -3,7 +3,7 @@
 set -e
 
 echo "Current folder: "$PWD
-CLONEIP=$(cat cloneip/ip.txt)
+CLONEIP=$(cat clonedetails/ip.txt)
 
 echo "Unzipping modules"
 mkdir BOSHmodulesExtracted

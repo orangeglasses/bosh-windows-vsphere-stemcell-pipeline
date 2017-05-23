@@ -29,7 +29,7 @@ echo Clone ready.
 echo "Querying details for IP."
 IP=$(curl -u $VROUSER:$VROPASS -sS -k -X GET --header 'Content-Type: application/json' --header 'Accept: application/json' $TEST | jq -r '.["output-parameters"][0].value.string.value')
 echo $IP
-echo $IP > cloneip/ip.txt
+echo $IP > cloneip/ip-1.txt
 
 exit 0
 fi
