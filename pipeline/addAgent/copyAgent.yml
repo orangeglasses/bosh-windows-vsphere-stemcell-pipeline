@@ -9,6 +9,7 @@ inputs:
 - name: windowsstem
 - name: BOSHresources
 - name: BOSHagent
+- name: cloneip
 
 run:
   path: windowsstem/pipeline/addAgent/copyAgent.sh

@@ -8,5 +8,8 @@ image_resource:
 inputs:
 - name: windowsstem
 
+outputs:
+- name: cloneip
+
 run:
   path: windowsstem/pipeline/clonevm/prepareclone.sh

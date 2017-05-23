@@ -3,13 +3,13 @@
 set -e
 
 echo "Current folder: "$PWD
+CLONEIP=$(cat cloneip/ip.txt)
 
 echo "Unzipping modules"
 mkdir BOSHmodulesExtracted
 unzip -o BOSHmodules/* -d BOSHmodulesExtracted/
 
-echo "Copying modules"
-# todo add ip returned from vro script
-sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHmodulesExtracted/* $VMUSER@192.168.0.80:'"/Program Files/WindowsPowerShell/Modules"'
+echo "Copying modules to clone at "$CLONEIP
+sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHmodulesExtracted/* $VMUSER@$CLONEIP:'"/Program Files/WindowsPowerShell/Modules"'
 
 echo "Modules copied to VM."

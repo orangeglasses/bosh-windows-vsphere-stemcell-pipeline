@@ -4,8 +4,9 @@ set -e
 
 echo "Current folder: "$PWD
 
-echo "Copying agent."
-# todo add ip returned from vro script
-sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHagent/* $VMUSER@192.168.0.80:'"/Program Files/WindowsPowerShell/Modules"'
+CLONEIP=$(cat cloneip/ip.txt)
+
+echo "Copying agent to clone at "$CLONEIP
+sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHagent/* $VMUSER@$CLONEIP:'"/Program Files/WindowsPowerShell/Modules"'
 
 echo "Agent zip copied to VM."
