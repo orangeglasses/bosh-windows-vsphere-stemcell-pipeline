@@ -8,7 +8,7 @@ unzip -o BOSHmodules/* -d BOSHmodulesExtracted/
 
 ls -lrt
 
-CLONEIP=$(cat cloneip)
+CLONEIP=$(cat redis-valies/cloneip)
 echo "Copying modules to clone at "$CLONEIP
 sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no BOSHmodulesExtracted/* $VMUSER@$CLONEIP:'"/Program Files/WindowsPowerShell/Modules"'
 
