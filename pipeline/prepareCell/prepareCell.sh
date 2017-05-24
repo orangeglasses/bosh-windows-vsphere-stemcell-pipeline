@@ -14,7 +14,7 @@ echo "Protecting cell."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Protect-CFCell}"' 
 
 echo "Installing agent."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-Agent -IaaS vsphere -agentZipPath C:\Program Files\WindowsPowerShell\Modules}"'
+"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-Agent -IaaS vsphere -agentZipPath 'C:\Program Files\WindowsPowerShell\Modules'}"'
 
 
 exit
