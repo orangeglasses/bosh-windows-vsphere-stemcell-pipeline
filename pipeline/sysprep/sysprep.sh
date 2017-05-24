@@ -2,9 +2,9 @@
 
 set -e
 
-ls -lrt 
+ls -lrt lgpo/
 echo "Unzipping lgpo."
-unzip lgpo.zip
+unzip lgpo/lgpo.zip
 
 CLONEIP=$(cat redis-values/cloneip)
 echo "Connecting to cell VM at "$CLONEIP
