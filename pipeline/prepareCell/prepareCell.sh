@@ -5,13 +5,13 @@ set -e
 CLONEIP=$(cat redis-values/cloneip)
 echo "Connecting to cell VM at "$CLONEIP
 
-REMOTEEXEC=(sshpass -p $VMPASS ssh -o StrictHostKeyChecking=no $VMUSER@$CLONEIP)
+remote_cmd=(sshpass -p $VMPASS ssh -o StrictHostKeyChecking=no $VMUSER@$CLONEIP)
+remote_ps_cmd=($remote_cmd 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command ')
 
 echo "Installing CF Features."
-# powershell -NonInteractive -ExecutionPolicy Unrestricted -File Install-CFFeatures
-#$REMOTEEXEC 'powershell -NonInteractive -ExecutionPolicy Unrestricted -File Install-CFFeatures'
-# sshpass -p $VMPASS ssh -o StrictHostKeyChecking=no $VMUSER@$CLONEIP 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-CFFeatures}"'
-#@{REMOTEEXEC} 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-CFFeatures}"'
-"${REMOTEEXEC[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-CFFeatures}"'
+#"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-CFFeatures}"'
+"${remote_ps_cmd[@]}" '"&{Install-CFFeatures}"'
 
+echo "Protecting cell".
+#"${remote_cmd[@]}" 
 exit
