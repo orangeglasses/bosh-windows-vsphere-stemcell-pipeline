@@ -6,4 +6,4 @@ inputs:
 - name: redis-values
 
 run:
-  path: windowsstem/pipeline/preparecell/prepareCell.sh
+  path: windowsstem/pipeline/prepareCell/prepareCell.sh
