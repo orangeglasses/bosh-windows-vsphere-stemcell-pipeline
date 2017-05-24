@@ -1,4 +1,10 @@
 ---
+resource_types:
+  - name: redis
+    type: docker-image
+    source:
+      repository: cfcommunity/redis-resource
+
 resources:
 - name: windowsstem
   type: git
