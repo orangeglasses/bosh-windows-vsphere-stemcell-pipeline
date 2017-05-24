@@ -22,7 +22,7 @@ then
 echo "Using old Clear-Disk cmdlet."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Clear-Disk}"'
 else
-echo "Using new Optimize-Disk cmdlet.
+echo "Using new Optimize-Disk cmdlet."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Optimize-Disk}"'
 fi
 
