@@ -16,5 +16,10 @@ echo "Protecting cell."
 echo "Installing agent."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-Agent -IaaS vsphere -agentZipPath \"C:\Program Files\WindowsPowerShell\Modules\agent.zip\"}"'
 
+echo "Optimize disk."
+"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Optimize-Disk}"'
+
+echo "Defrag and zero out disk."
+"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Compress-Disk}"'
 
 exit
