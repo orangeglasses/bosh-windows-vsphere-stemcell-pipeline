@@ -20,7 +20,7 @@ echo "Optimize disk."
 if [ "$VERSION" == "1056.0" ];
 then
 echo "Using old Clear-Disk cmdlet."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Clear-Disk}"'
+"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{BOSH.Disk\Clear-Disk}"'
 else
 echo "Using new Optimize-Disk cmdlet."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Optimize-Disk}"'
