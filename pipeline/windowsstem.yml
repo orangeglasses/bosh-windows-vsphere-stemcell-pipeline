@@ -4,6 +4,11 @@ resource_types:
     type: docker-image
     source:
       repository: cfcommunity/redis-resource
+  - name: file-url
+    type: docker-image
+    source:
+      repository: pivotalservices/concourse-curl-resource
+      tag: latest
 
 resources:
 - name: windowsstem
@@ -21,6 +26,11 @@ resources:
     password: {{redis_password}}
     keys:
       - cloneip
+- name: lgpo
+  type: file-url
+  source:
+    url: https://msdnshared.blob.core.windows.net/media/2016/09/LGPOv2-PRE-RELEASE.zip
+    filename: lgpo.zip
 
 jobs:
 - name: createVM
@@ -85,3 +95,18 @@ jobs:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
         VERSION: {{version}}
+
+- name: sysprep
+  public: true
+  plan:
+  - get: windowsstem
+  - get: redis-values
+    passed: [createVM, addBOSHmodules, addBOSHagent, prepareCell]
+  - get: lgpo
+  - task: sysprep
+    file: windowsstem/pipeline/sysprep/sysprep.yml
+    params:
+        VMUSER: {{vm_user}}
+        VMPASS: {{vm_pass}}
+        ORG: {{organisation}}
+        PRODUCTKEY: {{productkey}}

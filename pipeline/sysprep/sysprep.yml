@@ -1,0 +1,14 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: ruurdk/builder}
+
+inputs:
+- name: windowsstem
+- name: redis-values
+- name: lgpo
+
+run:
+  path: windowsstem/pipeline/sysprep/sysprep.sh
