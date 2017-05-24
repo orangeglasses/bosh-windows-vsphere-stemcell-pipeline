@@ -2,6 +2,7 @@
 
 set -e
 
+ls -lrt 
 echo "Unzipping lgpo."
 unzip lgpo.zip
 
