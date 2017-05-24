@@ -84,3 +84,4 @@ jobs:
     params:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
+        VERSION: {{version}}
