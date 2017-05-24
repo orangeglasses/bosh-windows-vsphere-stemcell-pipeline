@@ -9,7 +9,7 @@ inputs:
 - name: windowsstem
 - name: BOSHresources
 - name: BOSHmodules
-- name: clonedetail
+- name: redis-values
 
 run:
   path: windowsstem/pipeline/buildPSModules/copyModules.sh

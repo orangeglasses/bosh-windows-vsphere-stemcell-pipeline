@@ -2,7 +2,7 @@
 
 set -e
 
-CLONEIP=$(cat cloneip/ip.txt)
+CLONEIP=$(cat cloneip/cloneip)
 echo "Connecting to cell VM at "$CLONEIP
 
 sshpass -p $VMPASS ssh -o StrictHostKeyChecking=no $VMUSER@$CLONEIP

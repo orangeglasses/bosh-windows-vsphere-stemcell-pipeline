@@ -30,10 +30,7 @@ echo "Querying details for IP."
 IP=$(curl -u $VROUSER:$VROPASS -sS -k -X GET --header 'Content-Type: application/json' --header 'Accept: application/json' $TEST | jq -r '.["output-parameters"][0].value.string.value')
 echo $IP
 
-#NEWVERSION=$($(cat cloneip/version)+1)
-#echo "Creating version: "$NEWVERSION
-#echo $IP > cloneip/ip-$NEWVERSION.txt
-echo $IP > cloneip/ip-1.txt
+echo $IP > cloneip/cloneip
 
 exit 0
 fi

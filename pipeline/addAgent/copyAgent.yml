@@ -9,7 +9,7 @@ inputs:
 - name: windowsstem
 - name: BOSHresources
 - name: BOSHagent
-- name: clonedetail
+- name: redis-values
 
 run:
   path: windowsstem/pipeline/addAgent/copyAgent.sh
