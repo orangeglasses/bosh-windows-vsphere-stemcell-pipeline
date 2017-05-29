@@ -120,6 +120,7 @@ jobs:
   public: true
   plan:
   - get: windowsstem
+  - get: redis-values
     passed: [sysprep]
   - task: extractOVA
     file: windowsstem/pipeline/preparestemcell/extractOVA.yml
