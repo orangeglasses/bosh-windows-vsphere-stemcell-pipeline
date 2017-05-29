@@ -16,17 +16,20 @@ echo "Protecting cell."
 echo "Installing agent."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-Agent -IaaS vsphere -agentZipPath \"C:\Program Files\WindowsPowerShell\Modules\agent.zip\"}"'
 
-echo "Optimize disk."
-if [ "$VERSION" == "1056.0" ];
+if [ "$SKIPOPT" == "1" ];
 then
-echo "Using old Clear-Disk cmdlet."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{BOSH.Disk\Clear-Disk}"'
-else
-echo "Using new Optimize-Disk cmdlet."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Optimize-Disk}"'
-fi
+  echo "Optimize disk."
+  if [ "$VERSION" == "1056.0" ];
+  then
+  echo "Using old Clear-Disk cmdlet."
+  "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{BOSH.Disk\Clear-Disk}"'
+  else
+  echo "Using new Optimize-Disk cmdlet."
+  "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Optimize-Disk}"'
+  fi
 
-echo "Defrag and zero out disk."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Compress-Disk}"'
+  echo "Defrag and zero out disk."
+  "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Compress-Disk}"'
+fi
 
 exit

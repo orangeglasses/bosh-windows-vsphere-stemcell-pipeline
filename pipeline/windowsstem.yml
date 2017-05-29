@@ -54,6 +54,7 @@ jobs:
         - get: BOSHresources
         - get: windowsstem
         - get: redis-values
+          trigger: true
           passed: [createVM]
   - task: buildPSModules
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
@@ -72,6 +73,7 @@ jobs:
         - get: BOSHresources
         - get: windowsstem
         - get: redis-values
+          trigger: true
           passed: [createVM]
   - task: buildAgent
     file: windowsstem/pipeline/addAgent/buildAgent.yml
@@ -88,20 +90,23 @@ jobs:
   plan:
   - get: windowsstem
   - get: redis-values
-    passed: [createVM, addBOSHmodules, addBOSHagent]
+    trigger: true
+    passed: [addBOSHmodules, addBOSHagent]
   - task: prepareCell
     file: windowsstem/pipeline/prepareCell/prepareCell.yml
     params:
         VMUSER: {{vm_user}}
         VMPASS: {{vm_pass}}
         VERSION: {{version}}
+        SKIPOPT: {{skip_optimization}}
 
 - name: sysprep
   public: true
   plan:
   - get: windowsstem
   - get: redis-values
-    passed: [createVM, addBOSHmodules, addBOSHagent, prepareCell]
+    trigger: true
+    passed: [prepareCell]
   - get: lgpo
   - task: sysprep
     file: windowsstem/pipeline/sysprep/sysprep.yml
