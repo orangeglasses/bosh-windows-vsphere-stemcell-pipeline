@@ -110,3 +110,15 @@ jobs:
         VMPASS: {{vm_pass}}
         ORG: {{organisation}}
         PRODUCTKEY: {{productkey}}
+
+- name: preparestemcell
+  public: true
+  plan:
+  - get: windowsstem
+  - task: extractOVA
+    file: windowsstem/pipeline/preparestemcell/extractOVA.yml
+    params:
+        VCUSER: {{vc_user}}
+        VCPASS: {{vc_pass}}        
+        VCHOST: {{vc_host}}
+
