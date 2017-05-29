@@ -18,7 +18,7 @@ echo "Bundling"
 bundle install
 
 echo "Building stemcell"
-rake package:vsphere_ova[./ovadir/WindowsStemClone.ova,$MAINDIR/stemdir,$VERSION]
+rake package:vsphere_ova[$MAINDIR/ovadir/WindowsStemClone.ova,$MAINDIR/stemdir,$VERSION]
 
 #echo "Move to dedicated output"
 #mv build/bosh-psmodules.zip $MAINDIR/stemdir/
