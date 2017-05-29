@@ -34,6 +34,10 @@ resources:
 - name: release
   type: s3
   source:
+    access_key_id: {{s3_user}}
+    secret_access_key: {{s3_pass}}
+    disable_ssl: true
+    endpoint: {{s3_endpoint}}
     bucket: windowsstemcell
     regexp: bosh-stemcell-(.*)-vsphere-esxi-windows2012R2-go_agent.tgz
 
