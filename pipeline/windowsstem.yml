@@ -115,6 +115,7 @@ jobs:
   public: true
   plan:
   - get: windowsstem
+    passed: [sysprep]
   - task: extractOVA
     file: windowsstem/pipeline/preparestemcell/extractOVA.yml
     params:
