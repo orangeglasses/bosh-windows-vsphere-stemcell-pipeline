@@ -20,7 +20,4 @@ bundle install
 echo "Building stemcell"
 rake package:vsphere_ova[$MAINDIR/ovadir/WindowsStemClone.ova,$MAINDIR/stemdir,$VERSION]
 
-#echo "Move to dedicated output"
-#mv build/bosh-psmodules.zip $MAINDIR/stemdir/
-
 echo "Stemcell ready."

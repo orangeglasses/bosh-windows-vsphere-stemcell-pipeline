@@ -145,4 +145,4 @@ jobs:
         VERSION: {{version}}
   - put: release
     params:
-        file: bosh-stemcell-*-vsphere-esxi-windows2012R2-go_agent.tgz
+        file: stemdir/bosh-stemcell-*-vsphere-esxi-windows2012R2-go_agent.tgz
