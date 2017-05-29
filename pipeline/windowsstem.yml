@@ -31,6 +31,11 @@ resources:
   source:
     url: https://msdnshared.blob.core.windows.net/media/2016/09/LGPOv2-PRE-RELEASE.zip
     filename: lgpo.zip
+- name: release
+  type: s3
+  source:
+    bucket: windowsstemcell
+    regexp: bosh-stemcell-(.*)-vsphere-esxi-windows2012R2-go_agent.tgz
 
 jobs:
 - name: createVM
@@ -119,9 +124,11 @@ jobs:
 - name: preparestemcell
   public: true
   plan:
-  - get: windowsstem
-  - get: redis-values
-    passed: [sysprep]
+  - aggregate: 
+        - get: windowsstem
+        - get: BOSHresources
+        - get: redis-values
+          passed: [sysprep]
   - task: extractOVA
     file: windowsstem/pipeline/preparestemcell/extractOVA.yml
     params:
@@ -132,4 +139,6 @@ jobs:
     file: windowsstem/pipeline/preparestemcell/buildstem.yml
     params:
         VERSION: {{version}}
-
+  - put: release
+    params:
+        file: bosh-stemcell-*-vsphere-esxi-windows2012R2-go_agent.tgz
