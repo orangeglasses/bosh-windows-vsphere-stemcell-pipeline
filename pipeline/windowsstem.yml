@@ -128,4 +128,8 @@ jobs:
         VCUSER: {{vc_user}}
         VCPASS: {{vc_pass}}        
         VCHOST: {{vc_host}}
+  - task: buildstem
+    file: windowsstem/pipeline/preparestemcell/buildstem.yml
+    params:
+        VERSION: {{version}}
 
