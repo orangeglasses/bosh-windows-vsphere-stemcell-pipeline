@@ -133,8 +133,8 @@ jobs:
         - get: BOSHresources
         - get: redis-values
           passed: [sysprep]
-  - task: testS3connection
-    file: windowsstem/pipeline/preparestemcell/testS3connections.yml
+#  - task: testS3connection
+#    file: windowsstem/pipeline/preparestemcell/testS3connection.yml
   - put: release
     params:
         file: stemdir/bosh-stemcell-*-vsphere-esxi-windows2012R2-go_agent.tgz
