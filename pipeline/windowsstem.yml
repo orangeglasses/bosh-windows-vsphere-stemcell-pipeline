@@ -38,7 +38,7 @@ resources:
     secret_access_key: {{s3_pass}}
     disable_ssl: true
     endpoint: {{s3_endpoint}}
-    bucket: windowsstemcell
+    bucket: {{s3_bucket}}
     regexp: bosh-stemcell-(.*)-vsphere-esxi-windows2012R2-go_agent.tgz
 
 jobs:
@@ -133,11 +133,6 @@ jobs:
         - get: BOSHresources
         - get: redis-values
           passed: [sysprep]
-#  - task: testS3connection
-#    file: windowsstem/pipeline/preparestemcell/testS3connection.yml
-  - put: release
-    params:
-        file: stemdir/bosh-stemcell-*-vsphere-esxi-windows2012R2-go_agent.tgz
   - task: extractOVA
     file: windowsstem/pipeline/preparestemcell/extractOVA.yml
     params:
