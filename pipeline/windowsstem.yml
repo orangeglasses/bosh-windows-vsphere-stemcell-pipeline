@@ -135,6 +135,7 @@ jobs:
         - get: windowsstem
         - get: BOSHresources
         - get: redis-values
+          trigger: true
           passed: [sysprep]
   - task: extractOVA
     file: windowsstem/pipeline/preparestemcell/extractOVA.yml
