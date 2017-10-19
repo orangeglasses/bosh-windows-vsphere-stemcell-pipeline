@@ -24,6 +24,7 @@ resources:
   source:
     host: {{redis_endpoint}}
     password: {{redis_password}}
+    port: {{redis_port}}
     keys:
       - cloneip
 - name: lgpo
