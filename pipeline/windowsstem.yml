@@ -144,6 +144,8 @@ jobs:
         VCUSER: {{vc_user}}
         VCPASS: {{vc_pass}}        
         VCHOST: {{vc_host}}
+        VCDC: {{vc_dc}}
+        VCVMFOLDER: {{vc_vmfolder}}
   - task: buildstem
     file: windowsstem/pipeline/preparestemcell/buildstem.yml
     params:
