@@ -12,7 +12,7 @@ echo "Checking out version "$VERSION
 git fetch --all --tags --prune
 git checkout tags/$VERSION
 git reset --hard
-git pull
+git fetch
 
 echo "Getting submodules"
 git submodule update --init --recursive
