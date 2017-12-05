@@ -9,7 +9,8 @@ echo "Moving to resource folder: "$1
 cd $1
 
 echo "Checking out version "$VERSION
-git checkout $VERSION
+git fetch --all --tags --prune
+git checkout tags/$VERSION -b master
 git reset --hard
 git pull
 
