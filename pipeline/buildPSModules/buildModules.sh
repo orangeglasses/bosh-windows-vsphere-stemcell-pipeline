@@ -10,6 +10,8 @@ cd $1
 
 echo "Checking out version "$VERSION
 git checkout $VERSION
+git reset --hard
+git pull
 
 echo "Getting submodules"
 git submodule update --init --recursive
