@@ -10,7 +10,7 @@ cd $1
 
 echo "Checking out version "$VERSION
 git fetch --all --tags --prune
-git checkout tags/$VERSION -b master
+git checkout tags/$VERSION
 git reset --hard
 git pull
 
