@@ -9,12 +9,10 @@ echo "Moving to resource folder: "$1
 cd $1
 
 echo "Checking out version "$VERSION
-git checkout $VERSION
-git reset --hard
-git pull
+git checkout tags/$VERSION
 
 echo "Getting submodules"
-git submodule update --init --recursive
+git submodule update --init --recursive -f
 
 echo "Bundling"
 bundle install
