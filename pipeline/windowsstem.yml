@@ -11,6 +11,14 @@ resource_types:
       tag: latest
 
 resources:
+- name: schedule  
+  type: time  
+  source:    
+#    interval: 24h    
+    start: ((start_time))    
+    stop: ((stop_time))    
+    location: Europe/Amsterdam    
+    days: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
 - name: windowsstem
   type: git
   source:
@@ -46,6 +54,8 @@ jobs:
 - name: createVM
   public: true
   plan:
+  - get: schedule
+    trigger: true
   - get: windowsstem
   - task: clone
     file: windowsstem/pipeline/clonevm/clonevm.yml
@@ -64,10 +74,11 @@ jobs:
   public: true
   plan:
   - aggregate: 
+        - get: schedule
+          trigger: true
         - get: BOSHresources
         - get: windowsstem
         - get: redis-values
-          trigger: true
           passed: [createVM]
   - task: buildPSModules
     file: windowsstem/pipeline/buildPSModules/buildPSModules.yml
@@ -83,10 +94,11 @@ jobs:
   public: true
   plan:
   - aggregate:
+        - get: schedule
+          trigger: true
         - get: BOSHresources
         - get: windowsstem
         - get: redis-values
-          trigger: true
           passed: [createVM]
   - task: buildAgent
     file: windowsstem/pipeline/addAgent/buildAgent.yml
@@ -101,9 +113,10 @@ jobs:
 - name: prepareCell
   public: true
   plan:
+  - get: schedule
+    trigger: true
   - get: windowsstem
   - get: redis-values
-    trigger: true
     passed: [addBOSHmodules, addBOSHagent]
   - task: prepareCell
     file: windowsstem/pipeline/prepareCell/prepareCell.yml
@@ -116,9 +129,10 @@ jobs:
 - name: sysprep
   public: true
   plan:
+  - get: schedule
+    trigger: true
   - get: windowsstem
   - get: redis-values
-    trigger: true
     passed: [prepareCell]
   - get: lgpo
   - task: sysprep
@@ -133,10 +147,11 @@ jobs:
   public: true
   plan:
   - aggregate: 
+        - get: schedule
+          trigger: true
         - get: windowsstem
         - get: BOSHresources
         - get: redis-values
-          trigger: true
           passed: [sysprep]
   - task: extractOVA
     file: windowsstem/pipeline/preparestemcell/extractOVA.yml
