@@ -8,7 +8,7 @@ echo "Connecting to cell VM at "$CLONEIP
 remote_cmd=(sshpass -p $VMPASS ssh -o StrictHostKeyChecking=no $VMUSER@$CLONEIP)
 
 echo "Installing CF Features."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-CFFeatures}"'
+"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{if (Get-Command -Name Install-CFFeatures -ErrorAction SilentlyContinue) { Install-CFFeatures } else { Install-CFFeatures2012 }}"'
 
 echo "Protecting cell."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Protect-CFCell}"' 
