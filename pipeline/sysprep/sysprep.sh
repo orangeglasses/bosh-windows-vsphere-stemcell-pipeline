@@ -16,7 +16,7 @@ sshpass -p $VMPASS scp -r -o StrictHostKeyChecking=no LGPO.exe  $VMUSER@$CLONEIP
 echo "Invoke sysprep."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Invoke-Sysprep -IaaS vsphere -NewPassword "'$VMPASS'" -ProductKey "'$PRODUCTKEY'" -Owner "'$VMUSER'" -Organization "'$ORG'"}"'
 
-exit
-
 echo "sysprep done, waiting 2 minutes to be sure of shutdown."
 sleep 2m
+
+exit
