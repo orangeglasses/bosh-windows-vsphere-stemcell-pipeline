@@ -16,7 +16,7 @@ echo "Protecting cell."
 echo "Installing agent."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-Agent -IaaS vsphere -agentZipPath \"C:\Program Files\WindowsPowerShell\Modules\agent.zip\"}"'
 
-if [ "$SKIPOPT" == "1" ];
+if [ "$SKIPOPT" == "0" ];
 then
   echo "Optimize disk."
   if [ "$VERSION" == "1056.0" ];
