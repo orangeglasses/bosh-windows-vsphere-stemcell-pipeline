@@ -18,5 +18,5 @@ echo "Invoke sysprep."
 
 exit
 
-echo "sysprep done, waiting 1 minute to be sure of shutdown."
-sleep 1m
+echo "sysprep done, waiting 2 minutes to be sure of shutdown."
+sleep 2m
