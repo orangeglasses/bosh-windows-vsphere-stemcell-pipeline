@@ -1,5 +1,5 @@
 # bosh-windows-vsphere-stemcell-pipeline
-Concourse CI/CD pipeline for creating a BOSH windows stemcell from a vSphere base VM as described [here](https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder/blob/master/create-manual-vsphere-stemcells.md).
+Concourse CI/CD pipeline for creating a BOSH windows stemcell from a vSphere base VM as described [here](https://github.com/cloudfoundry-incubator/bosh-windows-stemcell-builder/wiki/Creating-a-vSphere-Stemcell-by-Hand).
 
 ![Pipeline](pipeline.PNG?raw=true "Pipeline")
 
