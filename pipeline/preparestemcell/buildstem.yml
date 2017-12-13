@@ -6,6 +6,7 @@ image_resource:
   source: {repository: ruurdk/builder}
 
 inputs:
+- name: stembuild
 - name: windowsstem
 - name: BOSHresources
 - name: ovadir

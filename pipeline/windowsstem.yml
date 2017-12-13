@@ -35,6 +35,11 @@ resources:
     port: {{redis_port}}
     keys:
       - cloneip
+- name: stembuild
+  type: github-release
+  source:
+    owner: pivotal-cf-experimental
+    repository: stembuild
 - name: lgpo
   type: file-url
   source:
@@ -54,6 +59,8 @@ jobs:
 - name: createVM
   public: true
   plan:
+  - get: stembuild
+    version: { tag: '0.13' }
   - get: schedule
     trigger: true
   - get: windowsstem
@@ -149,6 +156,8 @@ jobs:
   - aggregate: 
         - get: schedule
           trigger: true
+        - get: stembuild
+          version: { tag: '0.13'}
         - get: windowsstem
         - get: BOSHresources
         - get: redis-values

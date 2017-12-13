@@ -5,6 +5,11 @@ set -e
 MAINDIR=$PWD
 echo "Current folder: "$MAINDIR
 
+echo "Making sure stembuild is on path"
+cd stembuild
+chmod +x stembuild
+cp stembuild /usr/bin/stembuild
+
 echo "Moving to resource folder: "$1
 cd $1
 
