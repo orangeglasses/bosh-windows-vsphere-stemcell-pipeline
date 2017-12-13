@@ -2,7 +2,7 @@ FROM ruby:2.3.4
 
 MAINTAINER Ruurd Keizer
 
-RUN apt-get update && apt-get install -y curl git-core sshpass unzip jq
+RUN apt-get update && apt-get install -y curl git-core sshpass unzip jq libc6
 
 ADD assets assets/
 RUN assets/VMware-ovftool-4.2.0-4586971-lin.x86_64.bundle --eulas-agreed --required
