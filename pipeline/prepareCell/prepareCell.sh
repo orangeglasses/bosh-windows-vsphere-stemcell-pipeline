@@ -16,8 +16,8 @@ echo "Protecting cell."
 echo "Installing agent."
 "${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-Agent -IaaS vsphere -agentZipPath \"C:\Program Files\WindowsPowerShell\Modules\agent.zip\"}"'
 
-echo "Enabling BOSH SSH."
-"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-SSHD -SSHZipFile \"C:\provision\OpenSSH-Win64.zip\"}"'
+#echo "Enabling BOSH SSH."
+#"${remote_cmd[@]}" 'powershell -NonInteractive -ExecutionPolicy Unrestricted -Command "&{Install-SSHD -SSHZipFile \"C:\provision\OpenSSH-Win64.zip\"}"'
 
 if [ "$SKIPOPT" == "0" ];
 then
