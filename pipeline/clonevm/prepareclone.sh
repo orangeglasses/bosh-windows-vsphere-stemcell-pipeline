@@ -8,7 +8,11 @@ echo "Host: "$CLONEHOST
 echo "Cluster: "$CLONECLUSTER
 echo "Base Image: "$BASEVM
 #TOKEN=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{}] }' $VROAPI | grep Location: | cut -d' ' -f2 )
-TOKEN=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{"description":"string","name":"clusterName","scope":"local","type":"string","value":{"string":{"value":"'$CLONECLUSTER'"}}},{"description":"string","name":"hostName","scope":"local","type":"string","value":{"string":{"value":"'$CLONEHOST'"}}},{"description":"string","name":"vmName","scope":"local","type":"string","value":{"string":{"value":"'$BASEVM'"}}}] }' $VROAPI | grep Location: | cut -d' ' -f2 )
+#TOKEN=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{"description":"string","name":"clusterName","scope":"local","type":"string","value":{"string":{"value":"'$CLONECLUSTER'"}}},{"description":"string","name":"hostName","scope":"local","type":"string","value":{"string":{"value":"'$CLONEHOST'"}}},{"description":"string","name":"vmName","scope":"local","type":"string","value":{"string":{"value":"'$BASEVM'"}}}] }' $VROAPI | grep Location: | cut -d' ' -f2 )
+TR=$(curl -s -D - -u $VROUSER:$VROPASS -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{  "parameters": [{"description":"string","name":"clusterName","scope":"local","type":"string","value":{"string":{"value":"'$CLONECLUSTER'"}}},{"description":"string","name":"hostName","scope":"local","type":"string","value":{"string":{"value":"'$CLONEHOST'"}}},{"description":"string","name":"vmName","scope":"local","type":"string","value":{"string":{"value":"'$BASEVM'"}}}] }' $VROAPI)
+echo "Workflow start result: "$TR
+
+TOKEN =$($TR | grep Location: | cut -d' ' -f2)
 echo "Status token: "$TOKEN
 
 # eliminate CR from result.
